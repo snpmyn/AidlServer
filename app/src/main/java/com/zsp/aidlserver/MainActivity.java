@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
  * @date: 2021/5/20 4:26 下午
  */
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

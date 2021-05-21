@@ -76,7 +76,6 @@ public class BookService extends Service {
 
     private void initData() {
         bookList = new ArrayList<>();
-        bookList.add(new Book("书籍一"));
-        bookList.add(new Book("书籍二"));
+        bookList.add(new Book("服务器端书籍"));
     }
 }
