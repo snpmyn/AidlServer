@@ -17,12 +17,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--注册自定义 Binder 的 Service 以提供服务-->
+
         <service
-            android:name="com.zsp.aidlserver.CalculateService"
-            tools:ignore="ExportedService">
+            android:name="com.zsp.aidlserver.calculate.CalculateService"
+            android:enabled="true"
+            android:exported="false">
             <intent-filter>
-                <action android:name="com.zsp.aidlserver.action" />
+                <action android:name="com.zsp.aidlserver.calculate.action" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.zsp.aidlserver.book.BookService"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.zsp.aidlserver.book.action" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>

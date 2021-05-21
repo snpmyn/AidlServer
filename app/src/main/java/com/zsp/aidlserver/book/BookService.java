@@ -1,4 +1,4 @@
-package com.zsp.aidlserver;
+package com.zsp.aidlserver.book;
 
 import android.app.Service;
 import android.content.Intent;
@@ -7,31 +7,32 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * Created on 2021/5/20
+ * Created on 2021/5/21
  *
  * @author zsp
- * @desc 计算服务
+ * @desc 书籍服务
  */
-public class CalculateService extends Service {
+public class BookService extends Service {
     private final String TAG = this.getClass().getSimpleName();
-    /**
-     * 实现 AIDL 接口方法的 IBinder 实例
-     */
-    private final CalculateAIDL.Stub stub = new CalculateAIDL.Stub() {
+    private List<Book> bookList;
+    private final BookAIDL.Stub stub = new BookAIDL.Stub() {
         @Override
-        public int add(int x, int y) {
-            return x + y;
+        public List<Book> getBookList() {
+            return bookList;
         }
 
         @Override
-        public int max(int x, int y) {
-            return Math.max(x, y);
-        }
-
-        @Override
-        public int min(int x, int y) {
-            return Math.min(x, y);
+        public void addBookWithInOut(Book book) {
+            if (null != book) {
+                book.setName("服务器更改书名 TAG InOut");
+                bookList.add(book);
+            } else {
+                Log.e(TAG, "接到一空对象 TAG InOut");
+            }
         }
     };
 
@@ -39,6 +40,7 @@ public class CalculateService extends Service {
     public void onCreate() {
         Log.d(TAG, "onCreate");
         super.onCreate();
+        initData();
     }
 
     @Override
@@ -70,5 +72,11 @@ public class CalculateService extends Service {
     public void onDestroy() {
         Log.d(TAG, "onDestroy");
         super.onDestroy();
+    }
+
+    private void initData() {
+        bookList = new ArrayList<>();
+        bookList.add(new Book("书籍一"));
+        bookList.add(new Book("书籍二"));
     }
 }
