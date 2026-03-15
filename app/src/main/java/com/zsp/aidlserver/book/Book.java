@@ -28,7 +28,7 @@ public class Book implements Parcelable {
         name = in.readString();
     }
 
-    public static final Creator<Book> CREATOR = new Creator<Book>() {
+    public static final Creator<Book> CREATOR = new Creator<>() {
         @Override
         public Book createFromParcel(Parcel in) {
             return new Book(in);

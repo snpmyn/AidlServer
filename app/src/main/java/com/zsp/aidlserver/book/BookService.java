@@ -28,7 +28,7 @@ public class BookService extends Service {
         @Override
         public void addBookWithInOut(Book book) {
             if (null != book) {
-                book.setName("服务器更改书名 TAG InOut");
+                book.setName("服务端更改书名 TAG InOut");
                 bookList.add(book);
             } else {
                 Log.e(TAG, "接到一空对象 TAG InOut");
@@ -76,6 +76,6 @@ public class BookService extends Service {
 
     private void initData() {
         bookList = new ArrayList<>();
-        bookList.add(new Book("服务器端书籍"));
+        bookList.add(new Book("服务端书籍"));
     }
 }
